@@ -6,6 +6,7 @@ import cors from 'cors'
 
 async function main() {
     const app = express()
+    const port = process.env.PORT
 
     //middlewares
     app.use(express.json())
@@ -21,8 +22,8 @@ async function main() {
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
-    app.listen(8080, () => {
-        console.log('Server running OK')
+    app.listen(port, () => {
+        console.log('Server running OK on port:', port)
     })
 }
 
