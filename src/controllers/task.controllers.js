@@ -26,12 +26,12 @@ export const createTask = async (req, res) => {
 export const updateTasks = async (req, res) => {
     try {
         const { id } = req.params
-        const { name, done, projectId } = req.body
+
         const task = await Task.findByPk(id) //encuentra por primary key
-        //actualizar la data a lo que viene en el body
-        project.name = name
-        project.done = done
-        project.projectId = projectId
+
+        //actualiza solo el campo que venga en el body no hace falta que vengan todos los campos
+        task.set(req.body)
+
         project.save() //guardar la actualizacion de data
         res.status(200).json(project)
     } catch (error) {
@@ -63,9 +63,7 @@ export const getTask = async (req, res) => {
             }
         })
 
-        if (!task) {
-            return res.status(404).json({ message: 'Tarea Inexistente' })
-        }
+
         res.json(task)
     } catch (error) {
         return res.json({ message: error.message })

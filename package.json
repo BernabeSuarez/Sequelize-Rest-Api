@@ -1,7 +1,7 @@
 {
   "name": "sequelize-rest-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "ApiRest con sequelize",
   "main": "index.js",
   "type": "module",
   "scripts": {
